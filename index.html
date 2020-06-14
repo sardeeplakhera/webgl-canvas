@@ -1,0 +1,63 @@
+<html>
+   <body>
+      <div id="alert" style="display: none;background-color: yellow;">
+         This is an alert box.
+     </div>
+      <div id="inputs_holder">
+         <label>Enter number of images to be loaded: </label>
+         <input id="img_num" type="text"/>
+         <input type="radio" id="noAnimation" name="animation_group" value="noAnimation" checked="checked">
+         <label for="noAnimation">Disable Animation</label>
+         <input type="radio" id="doAnimate" name="animation_group" value="doAnimate">
+         <label for="doAnimate">Enable Animation</label>
+         <button onclick="main()">Click</button>
+     </div>
+     <canvas id="canvas"></canvas>
+   </body>
+
+   <style>
+      #alert{
+         padding: 20px;
+         background-color: yellow; 
+         color: black;
+         margin-bottom: 15px;
+      }
+   </style>
+   
+   <!-- vertex shader -->
+   <script  id="drawImage-vertex-shader" type="x-shader/x-vertex">
+   attribute vec4 a_position;
+   attribute vec2 a_texcoord;
+   
+   uniform mat4 u_matrix;
+   
+   varying vec2 v_texcoord;
+   
+   void main() {
+      gl_Position = u_matrix * a_position;
+      v_texcoord = a_texcoord;
+   }
+   </script>
+
+   <script  id="drawImage-fragment-shader" type="x-shader/x-fragment">
+   precision mediump float;
+   
+   varying vec2 v_texcoord;
+   
+   uniform sampler2D u_texture;
+   
+   void main() {
+      gl_FragColor = texture2D(u_texture, v_texcoord);
+   }
+   </script>
+   <!--
+   for most samples webgl-utils only provides shader compiling/linking and
+   canvas resizing because why clutter the examples with code that's the same in every sample.
+   See http://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html
+   and http://webglfundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
+   for webgl-utils, m3, m4, and webgl-lessons-ui.
+   -->
+   <script src="https://webglfundamentals.org/webgl/resources/webgl-utils.js"></script>
+   <script src="https://webglfundamentals.org/webgl/resources/m4.js"></script>
+   <script src="./index.js"></script>
+</html>
