@@ -71,7 +71,8 @@ function main() {
   // The texture will start with 1x1 pixels and be updated
   // when the image has loaded
   const loadImageAndCreateTextureInfo = function(url) {
-    url = "https://i.ibb.co/TvrDgMT/Hanumanji.png";
+    // url = "https://i.ibb.co/TvrDgMT/Hanumanji.png";
+    url = 1;
     return new Promise((resolve,reject) => {
       var tex = gl.createTexture();
       gl.bindTexture(gl.TEXTURE_2D, tex);
@@ -91,7 +92,8 @@ function main() {
       };
       var img = new Image();
       // img.src = "https://ibb.co/mDSrc5B";
-      img.src = url;
+      // img.src = url;
+      img.src = "./"+url+"_image.jpg";
       img.addEventListener('load', function() {
         fetch(img.src).then(resp => resp.blob())
           .then(blob => {
