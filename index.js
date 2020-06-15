@@ -97,11 +97,10 @@ function main() {
       img.addEventListener('load', function() {
         fetch(img.src).then(resp => resp.blob())
           .then(blob => {
-                  debugger;
                   total_encoded_size += blob.size;
                   total_decoded_size += img.height*img.width*4;
-                  textureInfo.width = img.width/50;
-                  textureInfo.height = img.height/50;
+                  textureInfo.width = img.width/10;
+                  textureInfo.height = img.height/10;
                   textureInfo.name = url;
                   
                   gl.bindTexture(gl.TEXTURE_2D, textureInfo.texture);
