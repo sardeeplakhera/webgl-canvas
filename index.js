@@ -72,7 +72,7 @@ function main() {
   // when the image has loaded
   const loadImageAndCreateTextureInfo = function(url) {
     // url = "https://i.ibb.co/TvrDgMT/Hanumanji.png";
-    url = 1;
+    url = 2;
     return new Promise((resolve,reject) => {
       var tex = gl.createTexture();
       gl.bindTexture(gl.TEXTURE_2D, tex);
