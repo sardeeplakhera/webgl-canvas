@@ -3,7 +3,7 @@
 let onLoad = false;
 var alert_div = document.getElementById("alert");
 
-function main() {
+function main(n) {
 
   if(onLoad === true)
   {
@@ -72,7 +72,6 @@ function main() {
   // when the image has loaded
   const loadImageAndCreateTextureInfo = function(url) {
     // url = "https://i.ibb.co/TvrDgMT/Hanumanji.png";
-    url = 2;
     return new Promise((resolve,reject) => {
       var tex = gl.createTexture();
       gl.bindTexture(gl.TEXTURE_2D, tex);
@@ -147,7 +146,7 @@ function main() {
       let i;
       for(i=1;i<=img_num;i++)
       {
-          promises.push(loadImageAndCreateTextureInfo(i));
+          promises.push(loadImageAndCreateTextureInfo(n));
       }
       
       Promise.all(promises.map(p => p.catch(e => null))).then(function(values){
